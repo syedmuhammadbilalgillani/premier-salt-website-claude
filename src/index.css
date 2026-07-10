@@ -1,0 +1,116 @@
+@import "tailwindcss";
+@import "@fontsource/playfair-display/400.css";
+@import "@fontsource/playfair-display/500.css";
+@import "@fontsource/playfair-display/600.css";
+@import "@fontsource/inter/400.css";
+@import "@fontsource/inter/500.css";
+@import "@fontsource/inter/600.css";
+
+@theme {
+  /* Premier Salt palette */
+  --color-terracotta: #b85c42;
+  --color-maroon: #672d24;
+  --color-salt-pink: #e5a08c;
+  --color-salt-pink-light: #f2c4b6;
+  --color-cream: #fff8f3;
+  --color-sand: #ead9cc;
+  --color-bg: #faf7f4;
+  --color-charcoal: #2b2725;
+  --color-muted: #6f6661;
+  --color-border: #e6d8d0;
+  --color-white: #ffffff;
+  --color-success: #55745b;
+  --color-warning: #a97232;
+  --color-error: #a6423a;
+
+  --font-serif: "Playfair Display", "Times New Roman", serif;
+  --font-sans: "Inter", system-ui, sans-serif;
+
+  --container-page: 1280px;
+}
+
+html {
+  font-size: calc(15px + 0.25 * ((100vw - 375px) / (1920 - 375)));
+}
+@media (min-width: 1920px) {
+  html {
+    font-size: 16px;
+  }
+}
+@media (max-width: 374px) {
+  html {
+    font-size: 14.5px;
+  }
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-charcoal);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--color-terracotta);
+  color: var(--color-cream);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-terracotta);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Eyebrow / caption, Elyse-style parenthetical label */
+.eyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-terracotta);
+}
+.eyebrow::before {
+  content: "( ";
+}
+.eyebrow::after {
+  content: " )";
+}
+
+/* Reveal-on-scroll primitive, animated by GSAP ScrollTrigger */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(28px);
+}
+
+/* Salt-crystal texture, CSS only */
+.salt-texture {
+  position: relative;
+}
+.salt-texture::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.5;
+  background-image:
+    radial-gradient(circle at 12% 18%, rgba(255,255,255,0.6) 0, transparent 1.4%),
+    radial-gradient(circle at 82% 34%, rgba(255,255,255,0.5) 0, transparent 1%),
+    radial-gradient(circle at 40% 68%, rgba(255,255,255,0.55) 0, transparent 1.2%),
+    radial-gradient(circle at 68% 82%, rgba(255,255,255,0.5) 0, transparent 0.9%),
+    radial-gradient(circle at 25% 90%, rgba(255,255,255,0.45) 0, transparent 1%);
+  background-size: 100% 100%;
+  mix-blend-mode: overlay;
+}
